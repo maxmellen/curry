@@ -1,16 +1,13 @@
 'use strict'
 
-const curry = f => (...args) => {
-  const passed = []
-  const feed = (...args) => {
-    passed.push(...args)
-    if (passed.length < f.length) {
-      return feed
-    } else {
-      return f(...passed)
-    }
+const curryN = (n, f) => (...args) => {
+  if (args.length < n) {
+    return curryN(n - args.length, (...moreArgs) => f(...args, ...moreArgs))
+  } else {
+    return f(...args)
   }
-  return feed(...args)
 }
+
+const curry = f => curryN(f.length, f)
 
 module.exports = curry
