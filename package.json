@@ -1,0 +1,10 @@
+{
+  "name": "curry",
+  "version": "0.1.0-alpha",
+  "scripts": {
+    "test": "tap *.test.js --100"
+  },
+  "devDependencies": {
+    "tap": "^8.0.0"
+  }
+}
